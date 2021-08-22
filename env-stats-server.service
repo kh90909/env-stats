@@ -1,0 +1,14 @@
+[Unit]
+Description=Environmental stats Python http server
+After=network.target
+
+[Service]
+ExecStart=/home/pi/env-stats/env/bin/python3 /home/pi/env-stats/stats_server.py
+WorkingDirectory=/home/pi/env-stats
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
