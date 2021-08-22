@@ -22,6 +22,7 @@ html_tmpl = '''<html>
 body {{
   background-color: #c0c0c0;
   font-family: sans-serif;
+  margin: 0;
 }}
 
 .main-cards {{
@@ -86,9 +87,34 @@ td.alert {{
 .humidity {{
   font-size: 3vw;
 }}
+
+.header {{
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: white;
+  padding: 10px;
+}}
+
+.header-text {{
+  float: left;
+  font-size: 3vw;
+  font-weight: bold;
+  color: black;
+}}
+
+.right-header-text {{
+  float: right;
+  font-size: 2vw;
+  vertical-align: bottom;
+}}
 </style>
 
 <body>
+ <div class="header">
+  <span class="header-text">Env stats</span>
+  <span class="header-text right-header-text">{time}</span>
+ </div>
  <div class="main-cards">
   {sensor_data_html}
  </div>
@@ -144,7 +170,7 @@ class MyServer(BaseHTTPRequestHandler):
         b64_graph = base64.b64encode(graph.getvalue()).decode()
 
         self.wfile.write(html_tmpl.format(
-            name=name,
+            time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             sensor_data_html=sensor_data_html,
             graph=b64_graph,
         ).encode())
