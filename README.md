@@ -3,6 +3,8 @@
 Data logger and web server for Xiaomi MiThermometers LYWSD03MMC temperature + humidity
 sensors running the [pvvx custom firmware](https://github.com/pvvx/ATC_MiThermometer).
 
+![Stats page screenshot](/docs/stats-page.png?raw=true "Stats page screenshot")
+
 ## Installation and setup on Raspberry Pi (Buster)
 
     sudo apt install git python3-venv libatlas-base-dev libopenjp2-7 libtiff5
